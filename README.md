@@ -1,29 +1,52 @@
 # vue-ibox
 
-## Project setup
+## how to use
 ```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
+npm install vue-ibox
 ```
 
-### Compiles and minifies for production
 ```
-npm run build
-```
-
-### Run your tests
-```
-npm run test
+import IBox from 'vue-ibox'
+import 'vue-ibox/dist/vue-ibox.css'
+Vue.component('IBox',IBox)
 ```
 
-### Lints and fixes files
+
+# props
+
+* img 
+
+imgSrc
+
+* link
+
+a href link url
+
+* label
+
+set your language label
+
+default is
+
 ```
-npm run lint
+{
+    reset: "重置",
+    link: "跳转",
+    large: "放大",
+    small: "缩小",
+    close: "关闭"
+}
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+# event
+
+* close
+
+when user click close btn you should reset img variable
+
+
+```
+close() {
+    this.img = ''
+}
+```

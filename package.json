@@ -1,10 +1,11 @@
 {
   "name": "vue-ibox",
-  "version": "0.1.0",
-  "private": true,
+  "version": "1.0.0",
+  "main": "dist/vue-ibox.common.js",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "build": "npm run build-ibox",
+    "build-ibox": "vue-cli-service build --target lib --name vue-ibox src/components/iBox.vue"
   },
   "dependencies": {
     "vue": "^2.5.21",
