@@ -29,8 +29,8 @@ export default class Link extends Vue {}
 
 <style lang="stylus" scoped>
 svg {
-    width 14px
-    margin-right 5px
+    width 17px
+    margin-right 7px
     top -2px
     position relative
 }

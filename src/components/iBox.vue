@@ -15,35 +15,44 @@
       <div
         class="large"
         @click="resize('reset')"
-      > <redo/> <span>{{label.reset}}</span></div>
+      >
+        <redo /> <span>{{label.reset}}</span></div>
       <div
         class="large"
         @click="resize('large')"
-      > <large/> <span>{{label.large}}</span></div>
+      >
+        <large /> <span>{{label.large}}</span></div>
       <div
         class="small"
         @click="resize('small')"
-      > <icon-small />  <span>{{label.small}}</span></div>
+      >
+        <icon-small /> <span>{{label.small}}</span></div>
       <div
         class="link"
         v-show="link"
         @click="openLink"
-      > <icon-link/> <span>{{ label.link }}</span></div>
+      >
+        <icon-link /> <span>{{ label.link }}</span></div>
       <div
         class="close"
         @click="close"
-      > <icon-close />  <span>{{ label.close }}</span></div>
+      >
+        <icon-close /> <span>{{ label.close }}</span></div>
     </div>
     <img
       :src="img"
-      :style="PositionStyle"
+      v-link-style:transform='transform'
+      v-link-style:left='domPosotin.x | px'
+      v-link-style:top='domPosotin.y | px'
       v-show="imgLoaded"
       @load="loaded"
     >
     <div
       class="loading"
       v-if="!imgLoaded"
-    ><loading/></div>
+    >
+      <loading />
+    </div>
   </div>
 </template>
 
@@ -57,28 +66,43 @@ import large from "./large.vue";
 import IconLink from "./link.vue";
 
 const defaultLabel = () => ({
-      reset: "重置",
-      link: "跳转",
-      large: "放大",
-      small: "缩小",
-      close: "关闭"
-})
+  reset: "重置",
+  link: "跳转",
+  large: "放大",
+  small: "缩小",
+  close: "关闭"
+});
+
+const linkStyle = (el: HTMLElement, bingding: any) => {
+  el.style[bingding.arg] = bingding.value;
+};
 
 @Component({
-    components: {
-        loading,
-        redo,
-        IconClose,
-        IconSmall,
-        large,
-        IconLink
+  components: {
+    loading,
+    redo,
+    IconClose,
+    IconSmall,
+    large,
+    IconLink
+  },
+  directives: {
+    "link-style": {
+      update: linkStyle,
+      bind: linkStyle
     }
+  },
+  filters: {
+    px(val: any) {
+      return val + "px";
+    }
+  }
 })
 export default class iBox extends Vue {
   @Prop() private img!: string;
   @Prop() private link!: string;
 
-  @Prop({default: defaultLabel }) label! : object ;
+  @Prop({ default: defaultLabel }) label!: object;
 
   scale = 1;
   firstClickPosition = {
@@ -105,7 +129,7 @@ export default class iBox extends Vue {
   close() {
     this.scale = 1;
     this.imgLoaded = false;
-    this.$emit("close")
+    this.$emit("close");
   }
 
   loaded() {
@@ -137,9 +161,9 @@ export default class iBox extends Vue {
         break;
       case "reset":
         this.domPosotin = {
-            x: 0,
-            y: 0
-        }
+          x: 0,
+          y: 0
+        };
         this.scale = 1;
         break;
     }
@@ -153,7 +177,7 @@ export default class iBox extends Vue {
       x: e.clientX,
       y: e.clientY
     };
-    this.firstClickDomPosition = Object.assign({}, this.domPosotin)
+    this.firstClickDomPosition = Object.assign({}, this.domPosotin);
     this.canMove = true;
   }
   move(e: any) {
@@ -174,12 +198,8 @@ export default class iBox extends Vue {
     this.canMove = false;
   }
 
-  get PositionStyle(){
-      return {
-          transform: `scale(${this.scale})`,
-          left: this.domPosotin.x + "px",
-          top: this.domPosotin.y + "px"
-      }
+  get transform() {
+    return `scale(${this.scale})`;
   }
 }
 </script>
