@@ -1,11 +1,12 @@
 {
   "name": "vue-ibox",
-  "version": "1.0.0",
-  "main": "dist/vue-ibox.common.js",
+  "version": "1.0.1",
+  "main": "dist/ibox.es.js",
+  "files": ["dist"],
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "npm run build-ibox",
-    "build-ibox": "vue-cli-service build --target lib --name vue-ibox src/components/iBox.vue"
+    "build": "vue-up build",
+    "postbuild": "cp dist/** docs/"
   },
   "dependencies": {
     "vue": "^2.5.21",
@@ -13,6 +14,7 @@
     "vue-property-decorator": "^7.0.0"
   },
   "devDependencies": {
+    "@gluons/vue-up": "^0.3.3",
     "@vue/cli-plugin-typescript": "^3.2.0",
     "@vue/cli-service": "^3.2.0",
     "stylus": "^0.54.5",

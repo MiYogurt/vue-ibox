@@ -1,8 +1,8 @@
 <meta charset="utf-8">
 <title>vue-ibox demo</title>
 <script src="https://unpkg.com/vue"></script>
-<script src="./vue-ibox.umd.js"></script>
-<link rel="stylesheet" href="./vue-ibox.css">
+<script src="./ibox.web.js"></script>
+<link rel="stylesheet" href="./ibox.css">
 
 <div id="app">
   <button @click="setSrc">open</button>
@@ -12,7 +12,7 @@
 <script>
 new Vue({
   components: {
-    demo: window["vue-ibox"]
+    demo: window["Ibox"]
   },
   data: {
     src: ''
