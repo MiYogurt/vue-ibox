@@ -1,0 +1,30 @@
+<meta charset="utf-8">
+<title>vue-ibox demo</title>
+<script src="https://unpkg.com/vue"></script>
+<script src="./vue-ibox.umd.js"></script>
+<link rel="stylesheet" href="./vue-ibox.css">
+
+<div id="app">
+  <button @click="setSrc">open</button>
+  <demo :img="src" link="https://www.baidu.com" @close="close"></demo>
+</div>
+
+<script>
+new Vue({
+  components: {
+    demo: window["vue-ibox"]
+  },
+  data: {
+    src: ''
+  },
+  methods: {
+    setSrc() {
+      this.src = "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1546264440122&di=f283efdf2aca568903399fade3ba0519&imgtype=0&src=http%3A%2F%2Fimg4.duitang.com%2Fuploads%2Fitem%2F201311%2F19%2F20131119204800_HLkRx.jpeg"
+    },
+    close() {
+      this.src = ''
+    }
+  }
+
+}).$mount('#app')
+</script>
