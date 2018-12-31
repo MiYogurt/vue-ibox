@@ -1,6 +1,6 @@
 {
   "name": "vue-ibox",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "dist/ibox.es.js",
   "files": ["dist"],
   "scripts": {

@@ -7,13 +7,16 @@ npm install vue-ibox
 
 ```
 import IBox from 'vue-ibox'
-import 'vue-ibox/dist/vue-ibox.css'
+import 'vue-ibox/dist/ibox.css'
 Vue.component('IBox',IBox)
 ```
 
 ```
 <i-box :img="src" link="https://www.baidu.com" @close="close"></i-box>
 ```
+
+> TIP
+UMD library gobal variable name is `window.Ibox`
 
 
 # props
