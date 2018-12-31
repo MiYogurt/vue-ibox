@@ -11,24 +11,28 @@ import 'vue-ibox/dist/vue-ibox.css'
 Vue.component('IBox',IBox)
 ```
 
+```
+<i-box :img="src" link="https://www.baidu.com" @close="close"></i-box>
+```
+
 
 # props
 
-* img 
+## `img `
 
 imgSrc
 
-* link
+## `link`
 
-a href link url
+A href link url
 
-* label
+## `label`
 
-set your language label
+Set your language label
 
-default is
 
-```
+```js
+// default
 {
     reset: "重置",
     link: "跳转",
@@ -40,10 +44,9 @@ default is
 
 # event
 
-* close
+## `close`
 
-when user click close btn you should reset img variable
-
+When user click close btn you should reset img variable
 
 ```
 close() {
